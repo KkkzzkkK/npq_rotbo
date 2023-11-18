@@ -201,10 +201,10 @@ class Robot(TorchRobot):
         loss_list = []
         batch_size = len(self.memory)
 
+        success = False
         while True:
             loss = self._learn(batch=batch_size)
             loss_list.append(loss)
-            success = False
             self.reset()
             for _ in range(self.maze.maze_size ** 2 - 1):
                 a, r = self.test_update()
